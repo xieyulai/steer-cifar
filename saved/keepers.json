@@ -1,0 +1,10 @@
+{
+  "cifar10_autonomous": {
+    "scenario_id": "cifar10_autonomous",
+    "experiment": "r10_tierC_ls_sweep_s1_ls01",
+    "keeper_exp_dir": "_runs/exp/20260910_183749_682528_s1of2_r10_tierC_ls_sweep_s1_ls01",
+    "best_model_path": "_runs/exp/20260910_183749_682528_s1of2_r10_tierC_ls_sweep_s1_ls01/best_model.pt",
+    "git_commit": "6881c4f",
+    "updated_at": "2026-09-11T10:34:47.390784+00:00"
+  }
+}

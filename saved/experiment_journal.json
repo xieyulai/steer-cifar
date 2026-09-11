@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "facts": {
+    "tsv_row_count": 39,
+    "last_experiment": "20260911_163017_706332_s1of2_r21_tierA_novel_s1_lookahead",
+    "last_git_head": "6881c4f",
+    "last_scenario_id": "cifar10_autonomous",
+    "updated_at": "2026-09-11T10:35:46Z"
+  },
+  "analyse": {
+    "tsv_row_count": 0,
+    "git_head": "",
+    "focus_scenario_id": "",
+    "updated_at": "",
+    "last_recommendation": null
+  },
+  "reflect": {
+    "last_consumed": {
+      "reflect_id": "R20260911_115633",
+      "consumed_at": "2026-09-11T06:00:22Z",
+      "wall_short": "plateau@Tier B×4",
+      "suggest_one_liner": "（人审 E）Tier E: 引入可微架构搜索 (DARTS-like) 替代固定 wrn28_10 backbone，在 100ep 烟测预算 (≤25s/ep) 内覆盖 wrn28_10 depth/width 与 ResNeXt-29 grouped-conv 等候选 ops，验证能否突破 wrn28_10 (36.48M) 单点容量天花板 [AUTO-RUN: defer Tier E（NN_RELAUNCH 未设）→ 继续 A–D：优先 Tier A-r、Tier A-n、Tier B-r] [TAM: A:exhausted/att×2/shallow×2 B:exhausted/att×2/shallow×2 C:attested/att×1 D:attested/att×1 E:not_attested] not_attested=Tier E [Innovation…见详文",
+      "tier_hint": "B",
+      "detail_rel": "references/auto/20260911_115633_auto_reflected.md",
+      "consume_summary": "--help"
+    },
+    "last_pending_snapshot": {
+      "reflect_id": "R20260911_183645",
+      "suggest_one_liner": "（人审 E）对 WRN-28-10 + cutmix_mixup ρ=0.5 + Mixup α=0.2 + LS=0.1 走 Snapshot Ensemble：cyclic cosine LR (T_0=50, M_restarts=3) 在每个周期低点存 3 个 snapshot，推理时多 snapshot 预测均值 [AUTO-RUN: defer Tier E（NN_RELAUNCH 未",
+      "tier_hint": "A",
+      "snapshot_at": "2026-09-11T10:39:32Z"
+    }
+  },
+  "entries": [
+    {
+      "ts": "2026-09-09T18:54:39Z",
+      "kind": "round",
+      "experiment": "20260910_014751_3493299_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9514,
+      "git_head": "0be9e35",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 1: KEEP plain SimpleDLA @ 0.9514 (cifar10_autonomous anchor; elapsed=3888s; 200ep)"
+    },
+    {
+      "ts": "2026-09-09T18:55:39Z",
+      "kind": "round",
+      "experiment": "20260910_014751_3493299_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9514,
+      "git_head": "4d96c3b",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-09T20:14:35Z",
+      "kind": "round",
+      "experiment": "20260910_025959_4087831_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9503,
+      "git_head": "1a13cd3",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 2: 2-slot Tier A OVAT DISCARD (s0 WD 5e-3→0.9116, s1 sgdr→0.9503 vs plain 0.9514); plateau=3/3 → next Tier C-routine"
+    },
+    {
+      "ts": "2026-09-09T20:15:57Z",
+      "kind": "round",
+      "experiment": "20260910_025959_4087831_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9503,
+      "git_head": "b7ff074",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-09T21:26:52Z",
+      "kind": "round",
+      "experiment": "20260910_041953_556854_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.949,
+      "git_head": "55839ee",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 3: Tier C-routine LABEL_SMOOTHING=0.1 DISCARD (val_acc=0.9490 vs plain 0.9514, Δ=-0.0024; plateau=5/3); LS soft-target closes train gap but hurts val; next: Tier B-routine (wrn28_10) or D-routine (Mixup α=0.2)"
+    },
+    {
+      "ts": "2026-09-09T21:27:56Z",
+      "kind": "round",
+      "experiment": "20260910_041953_556854_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.949,
+      "git_head": "5387a61",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-09T23:29:11Z",
+      "kind": "round",
+      "experiment": "20260910_053207_1150912_s0of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9653,
+      "git_head": "e46b4ce",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 4: 2-slot Tier B-routine KEEP (s0 wrn28_10 0.9653 NEW KEEPER Δ=+0.0139 vs plain 0.9514; s1 DLA 0.9585 Δ=+0.0071)"
+    },
+    {
+      "ts": "2026-09-09T23:31:02Z",
+      "kind": "round",
+      "experiment": "20260910_053207_1150912_s0of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9653,
+      "git_head": "5a01176",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T01:36:09Z",
+      "kind": "round",
+      "experiment": "20260910_073624_2184994_s0of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9641,
+      "git_head": "38d370c",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T03:48:32Z",
+      "kind": "round",
+      "experiment": "20260910_095111_3330603_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9706,
+      "git_head": "132c11f",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 6: 2-slot Tier D-routine on wrn28_10 KEEPER, BOTH KEEP — s0 Mixup α=0.2 NEW KEEPER 0.9720 (Δ=+0.0067 vs prior 0.9653); s1 CutMix α=1.0 KEEP 0.9706 (Δ=+0.0053); plateau reset 0/3; train_val_gap Mixup 1.29→0.64 (inverted vs prior baseline 1.08→0.96); D-routine attested on cifar10_autonomous wrn28_10"
+    },
+    {
+      "ts": "2026-09-10T03:51:25Z",
+      "kind": "round",
+      "experiment": "20260910_095111_3330603_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9706,
+      "git_head": "ff0e193",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T06:03:05Z",
+      "kind": "round",
+      "experiment": "20260910_120237_304874_s1of2_r7_tierA_wd_sweep",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.112,
+      "git_head": "253233d",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T08:16:17Z",
+      "kind": "round",
+      "experiment": "20260910_141425_1455739_s1of2_r8_s1_ema_decay",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9716,
+      "git_head": "f858683",
+      "changed_files": [
+        "train.py",
+        "workspace/__init__.py"
+      ],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 8: 2-slot Tier D-extend (s0 cutmix_mixup COMPOSITE_PROB_CUTMIX=0.5) + Tier C-extend (s1 EMA decay=0.999) on wrn28_10+Mixup α=0.2 KEEPER — s0 NEW KEEPER 0.9741 (Δ=+0.0021 vs R6 0.9720), s1 0.9716 DISCARD (Δ=-0.0004, missed Δneed 0.001); plateau reset 0/3"
+    },
+    {
+      "ts": "2026-09-10T08:18:10Z",
+      "kind": "round",
+      "experiment": "20260910_141425_1455739_s1of2_r8_s1_ema_decay",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9716,
+      "git_head": "ed66c24",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T10:29:16Z",
+      "kind": "round",
+      "experiment": "20260910_162835_3217075_s0of2_r9_tierA_lr_sweep_s0_lr005",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9748,
+      "git_head": "ef4b302",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T12:37:17Z",
+      "kind": "round",
+      "experiment": "20260910_183749_682528_s1of2_r10_tierC_ls_sweep_s1_ls01",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.977,
+      "git_head": "8d1ee97",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T14:46:52Z",
+      "kind": "round",
+      "experiment": "20260910_204803_2317587_s1of2_r11_tierD_extend_s1_composite_p03",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.975,
+      "git_head": "b790797",
+      "changed_files": [
+        "workspace/__init__.py"
+      ],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T17:00:00Z",
+      "kind": "round",
+      "experiment": "20260910_225507_3920666_s1of2_r12_tierA_sam_sweep_s1_rho005",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9485,
+      "git_head": "60a9588",
+      "changed_files": [
+        "workspace/__init__.py"
+      ],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T19:04:51Z",
+      "kind": "round",
+      "experiment": "20260911_010733_1383573_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9753,
+      "git_head": "12bf209",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 13: Tier A-routine LR=0.05 on R10 KEEPER DISCARD (val_acc=0.9753, Δ-0.0017 sub-keep threshold); reflect_ack R20260911_010114 consumed via pure single-axis LR sweep; TAM A not_attested → attested/att×3; plateau_streak=5/3 硬停"
+    },
+    {
+      "ts": "2026-09-10T19:06:43Z",
+      "kind": "round",
+      "experiment": "20260911_010733_1383573_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9753,
+      "git_head": "e7a070c",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T19:14:22Z",
+      "kind": "round",
+      "experiment": "20260911_010733_1383573_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9753,
+      "git_head": "8db3c5a",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T21:15:17Z",
+      "kind": "round",
+      "experiment": "20260911_031156_2943393_s1of2_r14_tierA_routine_s1_reference_anchor",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.972,
+      "git_head": "d50822a",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-10T23:26:50Z",
+      "kind": "round",
+      "experiment": "20260911_052419_412944_s0of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.8847,
+      "git_head": "8c8f800",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "R15: Tier C-extend Born-Again (s0 EMA+KD) + Tier A-extend SGDR (s1) 双槽双双 DISCARD. s0 0.8847 (Δ-0.0923 EMA teacher 冷启动破坏), s1 0.9721 (Δ-0.0049 warm restart 击穿). TAM C-extend×1 attested; plateau_streak=9/3 hard. reflect_ack R20260911_051613 consumed (defer Tier E, continue A-D). Next: B-novel WRN-40-4 注册 or C-extend EMA warmup fix."
+    },
+    {
+      "ts": "2026-09-10T23:28:19Z",
+      "kind": "round",
+      "experiment": "20260911_052419_412944_s0of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.8847,
+      "git_head": "c686558",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-11T01:41:13Z",
+      "kind": "round",
+      "experiment": "20260911_073657_2070079_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9739,
+      "git_head": "63dd89d",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 16: 2-slot Tier C-extend EMA+KD (s0 EMA_DECAY=0.9999 + KD=0.5) + Tier D-extend ρ=0.7 (s1) 双槽双双 DISCARD. s0 0.8847 (Δ-0.0923, EMA cold start bug 复现 R15 同模式, 高 EMA_DECAY 未能修复; 200ep 跑满 7227s, train_loss 3.83→1.25 缓慢下降但 val 长期震荡 0.10-0.83). s1 0.9739 (Δ-0.0031, ρ=0.5 optimum 确认; 200ep 跑满 6902s, gap decreasing 1.95→0.59). reflect_ack R20260911_072913 deferred (Tier E 仍需 NN_RELAUNCH); 采用 C-extend 高 EMA 退火 + D-extend ρ sweep 第 3 档双重实证; R10 SOTA 0.977 仍为 leader."
+    },
+    {
+      "ts": "2026-09-11T01:44:05Z",
+      "kind": "round",
+      "experiment": "20260911_073657_2070079_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9739,
+      "git_head": "bc5c8a6",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-11T03:55:21Z",
+      "kind": "round",
+      "experiment": "20260911_095236_3800030_s0of1_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.8742,
+      "git_head": "bb022e6",
+      "changed_files": [
+        "train.py",
+        "workspace/__init__.py"
+      ],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-11T06:01:47Z",
+      "kind": "round",
+      "experiment": "20260911_120241_1316765_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9752,
+      "git_head": "e7138a5",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-11T08:15:27Z",
+      "kind": "round",
+      "experiment": "20260911_141040_3003716_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9698,
+      "git_head": "ee2de03",
+      "changed_files": [
+        "workspace/__init__.py"
+      ],
+      "scenario_id": "cifar10_autonomous",
+      "note": "Round 20: Tier A-novel Nesterov (s0 wrn28_10 + Nesterov=True 200ep) + Tier B-routine WRN-40-4 smoke (s1 100ep) 双槽双双 DISCARD. s0 val=0.9758 Δ-0.0012; s1 val=0.9698 Δ-0.0072. R10 SOTA 0.977 仍 leader. reflect_ack adopt defer Tier E (NN_RELAUNCH 未设), 实施 A-novel 第 1 档 + B-routine 第 2 档. Nesterov 单 cfg 键改动不破 R10 SOTA 但也无破壁; WRN-40-4 印证 R11 capacity-bound 命题在 WRN 家族内亦成立. reflector pending R20260911_140324 consumed."
+    },
+    {
+      "ts": "2026-09-11T08:16:33Z",
+      "kind": "round",
+      "experiment": "20260911_141040_3003716_s1of2_run",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9698,
+      "git_head": "ba7eae4",
+      "changed_files": [],
+      "scenario_id": "cifar10_autonomous"
+    },
+    {
+      "ts": "2026-09-11T10:35:46Z",
+      "kind": "round",
+      "experiment": "20260911_163017_706332_s1of2_r21_tierA_novel_s1_lookahead",
+      "decision": "-",
+      "metric_key": "val_accuracy",
+      "metric_value": 0.9376,
+      "git_head": "6881c4f",
+      "changed_files": [
+        "train.py",
+        "workspace/__init__.py"
+      ],
+      "scenario_id": "cifar10_autonomous"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+profile: supervised
+gpus:
+- 0
+- 1
+max_parallel: 2
+device: auto
+time_budget: 7200
+seed: 42
+deterministic: true
+checkpoint: best
+exploration_mode: innovate
+early_stop:
+  patience: 0
+keep:
+  improve_mode: any_primary
+  mode: relative
+  primary_delta_rel: 0.001
+goal:
+  target: 0.99
+  policy: focus
+agent:
+  scenario_default: cifar10_autonomous
+ledger:
+  watchlist:
+  - MODEL_ARCH
+  - AUGMENTATION
+  - LOSS
+  - OPTIMIZER
+  - LR
+  - MOMENTUM
+  - WEIGHT_DECAY
+  - BATCH_SIZE
+  - EPOCHS
+  - SCHEDULER
